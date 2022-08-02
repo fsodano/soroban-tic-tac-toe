@@ -1,0 +1,33 @@
+[package]
+name = "tic-tac-toe"
+version = "0.1.0"
+authors = ["Fabricio Leonardo Sodano Pascazi <fabricio.sodano@gmail.com>"]
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+soroban-sdk = "0.0.3"
+soroban-token-contract = { version = "0.0.2", default-features = false  }
+stellar-xdr = { version = "0.0.1", features = ["next", "std"], optional = true }
+ed25519-dalek = { version = "1.0.1", optional = true }
+sha2 = { version = "0.10.2", optional = true }
+
+[features]
+default = ["export"]
+export = []
+testutils = ["soroban-sdk/testutils", "soroban-token-contract/testutils", "dep:ed25519-dalek", "dep:sha2", "dep:stellar-xdr"]
+
+[dev_dependencies]
+tic-tac-toe = { path = ".", features = ["testutils"] }
+
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+debug-assertions = false
+panic = "abort"
+codegen-units = 1
+lto = true
