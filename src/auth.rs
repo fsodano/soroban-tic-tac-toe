@@ -14,10 +14,6 @@ fn check_ed25519_auth(e: &Env, auth: KeyedEd25519Signature, msg: TicTacToeMessag
 fn check_account_auth(e: &Env, auth: KeyedAccountAuthorization, msg: TicTacToeMessage) {
     let acc = Account::from_public_key(&auth.public_key).unwrap();
 
-    // let msg = TicTacToeMessage {
-    //     domain: domain as u32,
-    //     parameters: parameters.try_into().unwrap(),
-    // };
     let msg_bin = msg.serialize(e);
 
     let threshold = acc.medium_threshold();
