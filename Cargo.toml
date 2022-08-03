@@ -21,6 +21,7 @@ testutils = ["soroban-sdk/testutils", "soroban-token-contract/testutils", "dep:e
 
 [dev_dependencies]
 tic-tac-toe = { path = ".", features = ["testutils"] }
+rand = { version = "0.7.3" }
 
 [profile.release]
 opt-level = "z"
