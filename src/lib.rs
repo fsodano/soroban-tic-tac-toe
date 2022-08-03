@@ -6,7 +6,7 @@ use core::panic;
 use alloc::string::ToString;
 use auth::{check_auth, PublicKeyTrait};
 use messages::TicTacToeMessage;
-use soroban_sdk::{contractimpl, contracttype, vec, Env, FixedBinary, Vec};
+use soroban_sdk::{contractimpl, contracttype, vec, Env, FixedBinary};
 use soroban_token_contract as token;
 use token::public_types::KeyedAuthorization;
 
